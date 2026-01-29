@@ -1,68 +1,28 @@
 # --------------------------
 # Site Basics
 # --------------------------
-title: Your Name
-tagline: Cinematographer & Visual Storyteller
+title: Ethan Tran
 description: >
   Cinematography-focused filmmaker creating immersive,
   dark, and atmospheric visual stories.
 
-url: "https://yourdomain.com"   # Replace with your domain or GitHub Pages URL
-baseurl: ""                     # Leave blank for root deployment
-
-timezone: America/Chicago
-lang: en
+url: "https://username.github.io"  # replace with your GitHub Pages URL
+baseurl: ""                        # leave blank if at root
 
 # --------------------------
 # Theme
 # --------------------------
-remote_theme: cotes2020/jekyll-theme-chirpy
-
-plugins:
-  - jekyll-remote-theme
-  - jekyll-seo-tag
-  - jekyll-sitemap
+theme: jekyll-theme-slate   # official dark GitHub Pages theme
 
 # --------------------------
 # Author Info
 # --------------------------
 author:
-  name: Your Name
-  email: you@example.com
-  avatar: /assets/img/avatar.png  # create a placeholder image
-  links:
-    - label: Vimeo
-      url: https://vimeo.com/yourusername
-    - label: Instagram
-      url: https://instagram.com/yourusername
-    - label: GitHub
-      url: https://github.com/username
+  name: Ethan Tran
+  email: ejt1141@gmail.com
 
 # --------------------------
-# Appearance
-# --------------------------
-theme_mode: dark   # forces dark mode
-toc: false         # clean pages, no table of contents
-post:
-  meta: false      # hide dates/reading time for a portfolio feel
-
-# --------------------------
-# Homepage Behavior
-# --------------------------
-paginate: 5
-paginate_path: "/page/:num/"
-
-homepage:
-  show_posts: false   # do not show blog posts on homepage
-
-nav:
-  - title: Reel
-    url: /
-  - title: Projects
-    url: /projects/
-
-# --------------------------
-# Collections
+# Collections for Projects/Reels
 # --------------------------
 collections:
   projects:
@@ -75,19 +35,14 @@ defaults:
       type: projects
     values:
       layout: page
-      toc: false
 
 # --------------------------
-# Markdown / Build
+# Build / Markdown
 # --------------------------
 markdown: kramdown
 highlighter: rouge
-
-kramdown:
-  syntax_highlighter: rouge
 
 exclude:
   - README.md
   - node_modules
   - vendor
-
