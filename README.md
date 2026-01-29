@@ -1,14 +1,17 @@
 # epiclion99516.github.io
 
 ### About me
-Recent BFA Film and Television graduate with a cinematography concentration and hands-on experience in professional camera systems, lighting design, and post-production. Passionate about crafting immersive visual stories for digital and short-form platforms.
+I'm a Chicago-based recent BFA Film and Television graduate with a cinematography concentration and hands-on experience in professional camera systems, lighting design, and post-production. I'm passionate about crafting immersive visual stories for digital and short-form platforms and open to full-time, part-time, or freelance work.
 
-### Showreel
+### Reel
 - Description
 - Links
 
-### Projects
+### Photography
 
-### Resume
+### Projects | Credits
 
-###
+### Resume | Skills
+
+### Contact info
+ejt1141@gmail.com
