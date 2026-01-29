@@ -2,4 +2,4 @@ title: Ethan Tran
 logo: docs/assets/lion.jpg
 description: I'm a recent BFA in Film & Television. Please see some of my work here.
 #show_downloads: true
-remote_theme: cotes2020/jekyll-theme-chirpy
+theme: jekyll-theme-minimal
