@@ -75,6 +75,12 @@ defaults:
 markdown: kramdown
 highlighter: rouge
 
+avatar: /assets/img/avatar.png   # can be placeholder
+social:
+  name: Your Name
+  email: your@email.com
+
+
 kramdown:
   syntax_highlighter: rouge
 
