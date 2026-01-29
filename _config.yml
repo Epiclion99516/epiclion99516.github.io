@@ -1,5 +1,84 @@
+# --------------------------
+# Site Basics
+# --------------------------
 title: Ethan Tran
-logo: docs/assets/lion.jpg
-description: I'm a recent BFA in Film & Television. Please see some of my work here.
-#show_downloads: true
-theme: jekyll-theme-minimal
+tagline: Cinematographer & Visual Storyteller
+description: >
+  Cinematography-focused filmmaker creating immersive,
+  dark, and atmospheric visual stories.
+
+url: "https://yourdomain.com"   # or https://username.github.io
+baseurl: ""
+
+timezone: America/Chicago
+lang: en
+
+# --------------------------
+# Theme
+# --------------------------
+remote_theme: cotes2020/jekyll-theme-chirpy
+
+plugins:
+  - jekyll-remote-theme
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# --------------------------
+# Author (used across site)
+# --------------------------
+author:
+  name: Your Name
+  email: your@email.com
+  links:
+    - label: Vimeo
+      url: https://vimeo.com/yourname
+    - label: Instagram
+      url: https://instagram.com/yourname
+    - label: GitHub
+      url: https://github.com/username
+
+# --------------------------
+# Appearance
+# --------------------------
+theme_mode: dark   # forces dark mode
+toc: false         # cleaner pages for portfolio
+
+# --------------------------
+# Homepage behavior
+# --------------------------
+paginate: 5
+paginate_path: "/page/:num/"
+
+# We’ll use the homepage as a landing page, not a blog feed
+homepage:
+  show_posts: false
+
+# --------------------------
+# Collections (for REELS / PROJECTS)
+# --------------------------
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: projects
+    values:
+      layout: page
+      toc: false
+
+# --------------------------
+# Markdown & Build
+# --------------------------
+markdown: kramdown
+highlighter: rouge
+
+kramdown:
+  syntax_highlighter: rouge
+
+exclude:
+  - README.md
+  - node_modules
+  - vendor
