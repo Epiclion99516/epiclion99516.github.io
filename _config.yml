@@ -1,14 +1,14 @@
 # --------------------------
 # Site Basics
 # --------------------------
-title: Ethan Tran
+title: Your Name
 tagline: Cinematographer & Visual Storyteller
 description: >
   Cinematography-focused filmmaker creating immersive,
   dark, and atmospheric visual stories.
 
-url: "https://yourdomain.com"   # or https://username.github.io
-baseurl: ""
+url: "https://yourdomain.com"   # Replace with your domain or GitHub Pages URL
+baseurl: ""                     # Leave blank for root deployment
 
 timezone: America/Chicago
 lang: en
@@ -24,16 +24,17 @@ plugins:
   - jekyll-sitemap
 
 # --------------------------
-# Author (used across site)
+# Author Info
 # --------------------------
 author:
   name: Your Name
-  email: your@email.com
+  email: you@example.com
+  avatar: /assets/img/avatar.png  # create a placeholder image
   links:
     - label: Vimeo
-      url: https://vimeo.com/yourname
+      url: https://vimeo.com/yourusername
     - label: Instagram
-      url: https://instagram.com/yourname
+      url: https://instagram.com/yourusername
     - label: GitHub
       url: https://github.com/username
 
@@ -41,20 +42,27 @@ author:
 # Appearance
 # --------------------------
 theme_mode: dark   # forces dark mode
-toc: false         # cleaner pages for portfolio
+toc: false         # clean pages, no table of contents
+post:
+  meta: false      # hide dates/reading time for a portfolio feel
 
 # --------------------------
-# Homepage behavior
+# Homepage Behavior
 # --------------------------
 paginate: 5
 paginate_path: "/page/:num/"
 
-# We’ll use the homepage as a landing page, not a blog feed
 homepage:
-  show_posts: false
+  show_posts: false   # do not show blog posts on homepage
+
+nav:
+  - title: Reel
+    url: /
+  - title: Projects
+    url: /projects/
 
 # --------------------------
-# Collections (for REELS / PROJECTS)
+# Collections
 # --------------------------
 collections:
   projects:
@@ -70,16 +78,10 @@ defaults:
       toc: false
 
 # --------------------------
-# Markdown & Build
+# Markdown / Build
 # --------------------------
 markdown: kramdown
 highlighter: rouge
-
-avatar: /assets/img/avatar.png   # can be placeholder
-social:
-  name: Your Name
-  email: your@email.com
-
 
 kramdown:
   syntax_highlighter: rouge
@@ -88,3 +90,4 @@ exclude:
   - README.md
   - node_modules
   - vendor
+
