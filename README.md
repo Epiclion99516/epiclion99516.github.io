@@ -1,13 +1,14 @@
 # epiclion99516.github.io
 
-### Project 1
+### About me
+Recent BFA Film and Television graduate with a cinematography concentration and hands-on experience in professional camera systems, lighting design, and post-production. Passionate about crafting immersive visual stories for digital and short-form platforms.
+
+### Showreel
 - Description
 - Links
 
-### Project 2
-- Description
-- Links
+### Projects
 
-### Education
+### Resume
 
-### Work History
+###
