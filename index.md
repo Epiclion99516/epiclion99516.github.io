@@ -1,19 +1,10 @@
-
-
 ---
 layout: page
 title: ""
 ---
 
-## Cinematography Reel
+## Welcome to My Portfolio
 
-<iframe src="https://player.vimeo.com/video/XXXXXXXX"
-width="100%" height="420" frameborder="0"
-allow="autoplay; fullscreen" allowfullscreen></iframe>
+My portfolio is under construction.  
+Here you’ll soon see reels, short films, and behind-the-scenes projects.
 
----
-
-## Selected Work
-- [Cinematography Reel](/projects/reel)
-- [Narrative Projects](/projects/horror-short)
-- [Behind the Scenes](/projects/bts)
