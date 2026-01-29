@@ -5,7 +5,7 @@ I'm a Chicago-based recent BFA Film and Television graduate with a cinematograph
 
 ### Reel
 - Description
-- Links
+- [nyt](https://www.nytimes.com/2026/01/28/t-magazine/sundance-2026-takeaways-movies-comedies.html)
 
 ### Photography
 
