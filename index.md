@@ -1,8 +1,8 @@
-md
+
 
 ---
 layout: page
-title: ""
+title: "Ethan Tran"
 ---
 
 ## Cinematography Reel
