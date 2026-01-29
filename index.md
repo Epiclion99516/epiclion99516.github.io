@@ -8,7 +8,7 @@ title: ""
 ## Cinematography Reel
 
 <iframe src="https://player.vimeo.com/video/XXXXXXXX"
-width="100%" height="360" frameborder="0"
+width="100%" height="420" frameborder="0"
 allow="autoplay; fullscreen" allowfullscreen></iframe>
 
 ---
