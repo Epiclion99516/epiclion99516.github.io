@@ -8,7 +8,7 @@ I'm a Chicago-based recent BFA Film and Television graduate with a cinematograph
 - Links
 
 ### Photography
-docs/assets/lion.jpg
+Logo: docs/assets/lion.jpg
 
 ### Projects | Credits
 
