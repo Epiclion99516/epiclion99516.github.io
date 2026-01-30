@@ -1,5 +1,196 @@
----
-layout: home
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Your Name — Film & Resume</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-# Hello, world!
+  <style>
+    /* ---- RESET ---- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Helvetica, Arial, sans-serif;
+      background: #0d0d0d;
+      color: #f2f2f2;
+      line-height: 1.6;
+      letter-spacing: 0.4px;
+    }
+
+    a {
+      color: #f2f2f2;
+      text-decoration: none;
+      border-bottom: 1px solid #444;
+    }
+
+    a:hover {
+      color: #ff2d2d;
+      border-bottom-color: #ff2d2d;
+    }
+
+    /* ---- LAYOUT ---- */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 80px 20px;
+    }
+
+    section {
+      margin-bottom: 120px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      margin-bottom: 30px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #aaa;
+    }
+
+    p {
+      max-width: 700px;
+      margin-bottom: 20px;
+    }
+
+    /* ---- HERO ---- */
+    .hero {
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .tagline {
+      font-size: 1.2rem;
+      color: #999;
+      max-width: 600px;
+    }
+
+    /* ---- FILM LIST ---- */
+    .film {
+      margin-bottom: 40px;
+    }
+
+    .film-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .film-meta {
+      font-size: 0.9rem;
+      color: #888;
+      margin-bottom: 10px;
+    }
+
+    /* ---- RESUME ---- */
+    .resume-item {
+      margin-bottom: 30px;
+    }
+
+    .resume-item strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    /* ---- FOOTER ---- */
+    footer {
+      text-align: center;
+      color: #555;
+      font-size: 0.8rem;
+      padding-bottom: 40px;
+    }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- HERO -->
+    <section class="hero">
+      <h1>Your Name</h1>
+      <p class="tagline">
+        Filmmaker / Editor / Director.  
+        Interested in tension, texture, and uncomfortable beauty.
+      </p>
+    </section>
+
+    <!-- FILM WORK -->
+    <section>
+      <h2>Selected Film Work</h2>
+
+      <div class="film">
+        <div class="film-title">Film Title One</div>
+        <div class="film-meta">Short Film · 2024</div>
+        <p>
+          Brief description of the film. Mood, themes, festivals, or collaborators.
+        </p>
+        <a href="https://vimeo.com/yourlink" target="_blank">Watch</a>
+      </div>
+
+      <div class="film">
+        <div class="film-title">Film Title Two</div>
+        <div class="film-meta">Experimental · 2023</div>
+        <p>
+          Another project description. Keep it spare and confident.
+        </p>
+        <a href="https://youtube.com/yourlink" target="_blank">Watch</a>
+      </div>
+    </section>
+
+    <!-- RESUME -->
+    <section>
+      <h2>Resume</h2>
+
+      <div class="resume-item">
+        <strong>Role — Project / Company</strong>
+        <span>2022–2024</span>
+        <p>
+          One-line description of what you did or what makes it notable.
+        </p>
+      </div>
+
+      <div class="resume-item">
+        <strong>Education</strong>
+        <p>
+          School / Program / Year
+        </p>
+      </div>
+
+      <p>
+        <a href="resume.pdf" target="_blank">Download full resume (PDF)</a>
+      </p>
+    </section>
+
+    <!-- CONTACT -->
+    <section>
+      <h2>Contact</h2>
+      <p>
+        <a href="mailto:youremail@email.com">youremail@email.com</a><br />
+        <a href="https://instagram.com/yourhandle" target="_blank">Instagram</a>
+      </p>
+    </section>
+
+    <footer>
+      © Your Name
+    </footer>
+
+  </div>
+</body>
+</html>
