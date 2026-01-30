@@ -43,6 +43,19 @@
       margin-bottom: 120px;
     }
 
+    /* Tighten space under hero only */
+    .hero {
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-bottom: 60px; /* reduced from 120px */
+    }
+
+    .hero p {
+      margin-bottom: 10px; /* tighter tagline spacing */
+    }
+
     h1 {
       font-size: 3rem;
       font-weight: 700;
@@ -62,27 +75,17 @@
       margin-bottom: 20px;
     }
 
-    /* ---- HERO ---- */
-    .hero {
-      min-height: 80vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
     .tagline {
       font-size: 1.2rem;
       color: #999;
       max-width: 600px;
     }
 
-    /* ---- FILM ---- */
     .film-title {
       font-size: 1.2rem;
       font-weight: 600;
     }
 
-    /* ---- RESUME ---- */
     .resume-item {
       margin-bottom: 30px;
     }
@@ -92,7 +95,6 @@
       margin-bottom: 5px;
     }
 
-    /* ---- FOOTER ---- */
     footer {
       text-align: center;
       color: #555;
@@ -100,7 +102,6 @@
       padding-bottom: 40px;
     }
 
-    /* ---- RESPONSIVE ---- */
     @media (max-width: 600px) {
       h1 {
         font-size: 2.2rem;
@@ -112,14 +113,6 @@
 <body>
   <div class="container">
 
-    /* Reduce space under hero section */
-.hero {
-  margin-bottom: 60px; /* instead of 120px */
-}
-
-.hero p {
-  margin-bottom: 10px; /* optional, makes tagline tighter */
-}
     <!-- HERO -->
     <section class="hero">
       <h1>Name</h1>
