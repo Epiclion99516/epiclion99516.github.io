@@ -33,7 +33,19 @@
     }
 
     /* ---- LAYOUT ---- */
-    .container {
+   .video-wrapper {
+  position: relative;
+  padding-top: 56.25%; /* 16:9 aspect ratio */
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+ .container {
       max-width: 900px;
       margin: 0 auto;
       padding: 40px 20px;
@@ -125,7 +137,9 @@
     <!-- REEL -->
     <section>
       <h2>Film</h2>
-      <a href="https://vimeo.com/1160243877?share=copy&fl=sv&fe=ci" target="_blank">Vimeo reel</a>
+  
+  <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1160243877?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Reel, DePaul University"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+   
     </section>
 
     <!-- PHOTOGRAPHY -->
