@@ -14,13 +14,13 @@
       margin: 0;
       padding: 0;
       font-family: 'Inter', sans-serif;
-      background-color: #111; /* dark background */
-      color: #fff;            /* white text */
+      background-color: #111;
+      color: #fff;
       line-height: 1.6;
       text-align: left;
     }
 
-    /* --- Page container for consistent alignment --- */
+    /* --- Page container --- */
     section, header {
       max-width: 800px;
       margin: 0 auto 2em auto;
@@ -32,7 +32,8 @@
       font-size: 3em;
       margin-bottom: 0.5em;
       font-weight: 700;
-      text-align: left;  /* left-align name */
+      text-align: left;
+      letter-spacing: 1px;
     }
 
     h2 {
@@ -57,7 +58,7 @@
 
     /* --- Lists --- */
     ul {
-      list-style: disc inside;
+      list-style: disc inside; /* flush-wrapped lines */
       margin-left: 0;
       padding-left: 0;
     }
@@ -68,13 +69,15 @@
 
     /* --- Links --- */
     a {
-      color: #8ab4f8;  /* brighter turquoise for readability */
+      color: #8ab4f8; /* silvery blue */
       text-decoration: none;
       font-weight: 500;
+      transition: transform 0.15s ease, color 0.15s ease;
     }
 
     a:hover {
-      color: #a3c1ff;  /* lighter green on hover */
+      color: #a3c1ff; /* lighter blue on hover */
+      transform: scale(1.02);
     }
   </style>
 </head>
@@ -82,29 +85,30 @@
 
   <!-- Header / Name -->
   <header>
-    <h1>Ethan Tran</h1>
+    <h1>Your Name</h1>
     <p>I’m a BFA Film & Television graduate with hands-on experience across cinematography, lighting, editing, and live production.</p>
     <p>I’ve worked on narrative, documentary, and live-event projects in fast-paced, collaborative environments.</p>
   </header>
 
   <!-- Sample Projects -->
   <section id="sample-projects">
-    <h2>Sample Film Projects</h2>
+    <h2>Sample Projects</h2>
     <ul>
       <li><a href="https://player.vimeo.com/video/1160243877" target="_blank">BFA Filmmaking Reel (assorted projects, 2 min)</a></li>
-      <li><a href="https://www.youtube.com/watch?v=vMSxL_GT7YM" target="_blank">"The Grudge" (Final Year Film Project, 15 min)</a></li>
+      <li><a href="https://www.youtube.com/watch?v=vMSxL_GT7YM" target="_blank">"The Grudge" (final year film project, 15 min)</a></li>
       <li><a href="https://www.youtube.com/@ReysEdits/videos" target="_blank">Selected Editing Projects</a></li>
     </ul>
   </section>
 
-    <section id="sample-projects">
+  <!-- Sample Photography -->
+  <section id="sample-photography">
     <h2>Sample Photography</h2>
     <ul>
-      <li><a href="https://www.instagram.com/ethantran.png?igsh=M3kzdndvbHBlejht" target="_blank">Instagram (assorted images)</a></li>
-  
+      <li><a href="https://www.instagram.com/ethantran.png?igsh=M3kzdndvbHBlejht" target="_blank">Photography Portfolio on Instagram</a></li>
+
     </ul>
   </section>
-  
+
   <!-- Skills -->
   <section id="skills">
     <h2>Skills</h2>
@@ -129,9 +133,9 @@
   <!-- Contact -->
   <section id="contact">
     <h2>Contact</h2>
-    <p>Email: <a href="ejt1141@gmail.com">ejt1141@gmail.com</a></p>
+    <p>Email: <a href="mailto:ejt1141@gmail.com">ejt1141@gmail.com</a></p>
     <p>Resume: <a href="resume.pdf" target="_blank">Download PDF</a></p>
- 
+  
   </section>
 
 </body>
