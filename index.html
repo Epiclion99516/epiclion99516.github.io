@@ -4,23 +4,35 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Portfolio</title>
+
+  <!-- Modern font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
   <style>
     /* --- Global Styles --- */
     html, body {
       margin: 0;
       padding: 0;
-      font-family: sans-serif;
+      font-family: 'Inter', sans-serif;
       background-color: #111; /* dark background */
       color: #fff;            /* white text */
-      line-height: 1.5;
+      line-height: 1.6;
       text-align: left;
+    }
+
+    /* --- Page container for consistent alignment --- */
+    section, header {
+      max-width: 800px;
+      margin: 0 auto 2em auto;
+      padding: 0 20px;
     }
 
     /* --- Headings --- */
     h1 {
       font-size: 3em;
-      margin-bottom: 0.25em;
-      text-align: center;
+      margin-bottom: 0.5em;
+      font-weight: 700;
+      text-align: left;  /* left-align name */
     }
 
     h2 {
@@ -29,22 +41,18 @@
       margin-bottom: 0.75em;
       border-bottom: 1px solid #444;
       padding-bottom: 0.25em;
+      font-weight: 600;
     }
 
     h3 {
       font-size: 1.2em;
       margin-bottom: 0.5em;
+      font-weight: 600;
     }
 
+    /* --- Paragraphs --- */
     p {
-      margin: 0 0 1em 0;
-    }
-
-    /* --- Section spacing --- */
-    section {
-      max-width: 800px;
-      margin: 0 auto 2em auto; /* center sections with spacing */
-      padding: 0 20px;
+      margin-bottom: 1em;
     }
 
     /* --- Lists --- */
@@ -60,12 +68,13 @@
 
     /* --- Links --- */
     a {
-      color: #1e90ff;  /* bright blue for visibility */
+      color: #1abc9c;  /* brighter turquoise for readability */
       text-decoration: none;
+      font-weight: 500;
     }
 
     a:hover {
-      color: #63b3ed;
+      color: #2ecc71;  /* lighter green on hover */
     }
   </style>
 </head>
