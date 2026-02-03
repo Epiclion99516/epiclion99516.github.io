@@ -1,281 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title></title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <style>
-    /* ---- RESET ---- */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: Helvetica, Arial, sans-serif;
-      background: #0d0d0d;
-      color: #f2f2f2;
-      line-height: 1.4;
-      letter-spacing: 0.4px;
-    }
-
-    a {
-      color: #f2f2f2;
-      text-decoration: none;
-      border-bottom: 1px solid #444;
-    }
-
-    a:hover {
-      color: #ff2d2d;
-      border-bottom-color: #ff2d2d;
-    }
-
-    /* ---- LAYOUT ---- */
-   .video-wrapper {
-  position: relative;
-  padding-top: 56.25%; /* 16:9 aspect ratio */
-}
-
-.video-wrapper iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
- .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 40px 20px;
-    }
-
-    section {
-      margin-bottom: 80px;
-    }
-
-    /* Tighten space under hero only */
-    .hero {
-      min-height: auto;
-      justify-content: flex-start;
-    }
-
-    .hero p {
-      margin-bottom: 10px; /* tighter tagline spacing */
-    }
-
-    h1 {
-      font-size: 3rem;
-      font-weight: 700;
-      margin-bottom: 20px;
-    }
-
-    h2 {
-      font-size: 1.4rem;
-      margin-bottom: 30px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: #aaa;
-    }
-
-p {
-  max-width: 650px;     /* keeps lines readable */
-  margin: 0 auto 1.5em; /* center and add space below */
-  line-height: 1.5;     /* better readability */
-  font-weight: 400;     /* normal text */
-  font-size: 1.05em;    /* slightly larger for portfolio */
-}
-
-    .tagline {
-      font-size: 1.2rem;
-      color: #999;
-      max-width: 600px;
-    }
-
-    .film-title {
-      font-size: 1.2rem;
-      font-weight: 600;
-    }
-
-    .resume-item {
-      margin-bottom: 30px;
-    }
-
-    .resume-item strong {
-      display: block;
-      margin-bottom: 5px;
-    }
-
-    footer {
-      text-align: center;
-      color: #555;
-      font-size: 0.8rem;
-      padding-bottom: 40px;
-    }
-
-    ul.skills {
-  list-style-type: disc; /* standard bullets */
-  padding-left: 20px; /* indentation */
-  margin: 0 0 20px 0; /* bottom spacing from next section */
-}
-
-ul.skills li {
-  margin-bottom: 8px; /* space between bullets */
-}
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 2.2rem;
-      }
-    }
-  </style>
-
-/* --- Global text alignment and reset --- */
-body {
-    text-align: left;       /* left-align everything by default */
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif; /* optional, choose your preferred font */
-}
-
-/* --- Headings and paragraphs --- */
-h1, h2, h3, p {
-    text-align: left;
-    margin-left: 0;
-    padding-left: 0;
-    line-height: 1.5;
-}
-
-/* --- Sections for spacing between content blocks --- */
-section {
-    margin-bottom: 2em;  /* consistent spacing between sections */
-}
-
-/* --- Unordered lists (ul) and list items (li) --- */
-ul {
-    list-style-position: inside; /* bullets inside text block */
-    padding-left: 0;             /* remove default indentation */
-    margin-left: 0;              /* remove extra spacing */
-}
-
-ul li {
-    padding-left: 0;
-    margin-left: 0;
-    margin-bottom: 0.5em;        /* small gap between bullets */
-}
-
-/* --- Div containers --- */
-div {
-    padding-left: 0 !important;  /* remove left padding */
-    margin-left: 0 !important;   /* remove left margin */
-}
-
-/* --- Optional: links and buttons --- */
-a {
-    text-decoration: none;
-    color: #000;                 /* black text links by default */
-}
-
-a:hover {
-    color: #555;                 /* subtle hover effect */
-}
-
-</head>
-
 <body>
-  <div class="container">
+  <!-- Hero / Intro Section -->
+  <section id="intro">
+    <p>
+      I’m a BFA Film & Television graduate with hands-on experience across cinematography, lighting, editing, and live production. I’ve worked on narrative, documentary, and live-event projects in fast-paced, collaborative environments.
+    </p>
 
-    <!-- HERO -->
-    <section class="hero">
-      <h1>Ethan Tran</h1>
-      <p class="tagline">
-    Early-Career Filmmaker
-<p>Camera • Lighting • Post-Production</p>    
-      <p>
-I’m a BFA Film & Television graduate with hands-on experience across cinematography, lighting, editing, and live production. I’ve worked on narrative, documentary, and live-event projects in fast-paced, collaborative environments.
-</p>
-    </section>
+    <!-- Optional Call-to-Action Buttons -->
+    <div class="cta">
+      <a href="#sample-film-work" class="btn">View Film Reel</a>
+      <a href="#resume" class="btn">Download Resume</a>
+    </div>
+  </section>
 
-    <!-- REEL -->
-    <section>
-   <h2>Sample Film Work</h2>
+  <!-- Sample Film Work -->
+  <section id="sample-film-work">
+    <h2>Sample Film Work</h2>
+    <ul>
+      <li><a href="https://player.vimeo.com/video/1160243877" target="_blank">BFA Filmmaking Reel (assorted projects, 2 min)</a></li>
+      <li><a href="https://www.youtube.com/watch?v=vMSxL_GT7YM" target="_blank">"The Grudge" (Final Year Film Project, 15 min)</a></li>
+      <li><a href="https://www.youtube.com/@ReysEdits/videos" target="_blank">Selected Editing Projects</a></li>
+    </ul>
+  </section>
 
-<div class="sample">
-  <p><a href="https://player.vimeo.com/video/1160243877" target="_blank">
-    BFA Filmmaking Reel (assorted projects, 2 min)
-  </a></p>
-</div>
+  <!-- Skills Section -->
+  <section id="skills">
+    <h2>Skills</h2>
+    <ul>
+      <li>Cinematography & camera operation</li>
+      <li>Lighting for narrative and live events</li>
+      <li>Editing & color (DaVinci Resolve)</li>
+      <li>Small-crew and fast-paced productions</li>
+    </ul>
+  </section>
 
-<div class="sample">
-  <p><a href="https://www.youtube.com/watch?v=vMSxL_GT7YM" target="_blank">
-    "The Grudge" (final year project, 15 min)
-  </a></p>
-</div>
-
-<div class="sample">
-  <p><a href="https://www.youtube.com/@ReysEdits/videos" target="_blank">
-    Selected Editing Projects
-  </a></p>
-</div>
-      
-    </section>
-
-    <!-- PHOTOGRAPHY -->
-    <section>
-      <h2>Sample Photography</h2>
-      <a href="https://www.instagram.com/ethantran.png?igsh=M3kzdndvbHBlejht" target="_blank">Instagram</a>
-    </section>
-
-    <!-- SKILLS -->
-  <section>
-  <h2>Skills</h2>
-<ul class="skills">
-<ul>
-    <li>Cinematography & camera operation</li>
-    <li>Lighting for narrative and live events</li>
-    <li>Editing & color (DaVinci Resolve)</li>
-    <li>Small-crew and fast-paced productions</li>
- </ul> 
-</section>
-
-
-    <!-- RESUME -->
-    <section>
-      <h2>Experience</h2>
-
-      <div class="resume-item">
-        <strong>Production Assistant | DePaul Visiting Artist Series, 2024-2025</strong>
-        <p>Lighting & DMX operation, AV playback, BTS photo/video, live-event support.</p>
-      </div>
-
-      <div class="resume-item">
-        <strong>Director, Cinematographer, Editor | Independent Film Productions (DePaul University), 2023-2025</strong>
-               <p>Camera, lighting, editing, and sound across 40+ narrative and documentary projects.</p>
-      </div>
-
-      <div class="resume-item">
-        <strong>Camera Operator | Arlington Independent Media, 2019</strong>
-                <p>Live event coverage and youth media instruction.</p>
-      </div>
-
-      <p>
-        <a href="resume.pdf" target="_blank">Download full resume (PDF)</a>
-      </p>
-    </section>
-
-    <!-- CONTACT -->
-    <section>
-      <h2>Contact</h2>
-      <p>
-        <a href="mailto:ejt1141@gmail.com">ejt1141@gmail.com</a><br />
-    
-      </p>
-    </section>
-
-    <footer>
-      © Ethan Tran
-    </footer>
-
-  </div>
+  <!-- Optional Resume Section -->
+  <section id="resume">
+    <h2>Resume</h2>
+    <p><a href="resume.pdf" target="_blank">Download my resume (PDF)</a></p>
+  </section>
 </body>
-</html>
