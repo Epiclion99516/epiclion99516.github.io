@@ -1,160 +1,820 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ethan Tran — Cinematographer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-
-
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Portfolio</title>
-
-  <!-- Modern font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
   <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  body {
-    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
-  }
-
-  h1, h2, h3 {
-    font-weight: 600;
-    letter-spacing: -0.02em;
-  }
-   /* --- Global Styles --- */
-    html, body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Inter', sans-serif;
-      background-color: #111;
-      color: #fff;
-      line-height: 1.6;
-      text-align: left;
+    :root {
+      --bg: #0a0a0a;
+      --bg2: #111111;
+      --bg3: #181818;
+      --text: #e8e2d9;
+      --muted: #7a7570;
+      --accent: #c8a96e;
+      --accent2: #8a6f4a;
+      --border: #232323;
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-mono: 'DM Mono', monospace;
     }
 
-    /* --- Page container --- */
-    section, header {
-      max-width: 800px;
-      margin: 0 auto 2em auto;
-      padding: 0 20px;
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 1.7;
+      cursor: crosshair;
     }
 
-    /* --- Headings --- */
-    h1 {
-      font-size: 3em;
-      margin-bottom: 0.5em;
-      font-weight: 700;
-      text-align: left;
-      letter-spacing: 1px;
+    /* ── NOISE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0.4;
     }
 
-    h2 {
-      font-size: 1.8em;
-      margin-top: 2em;
-      margin-bottom: 0.75em;
-      border-bottom: 1px solid #444;
-      padding-bottom: 0.25em;
-      font-weight: 600;
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 48px;
+      background: linear-gradient(to bottom, rgba(10,10,10,0.95) 0%, transparent 100%);
     }
 
-    h3 {
-      font-size: 1.2em;
-      margin-bottom: 0.5em;
-      font-weight: 600;
-    }
-
-    /* --- Paragraphs --- */
-    p {
-      margin-bottom: 1em;
-    }
-
-    /* --- Lists --- */
-    ul {
-      list-style: disc inside; /* flush-wrapped lines */
-      margin-left: 0;
-      padding-left: 0;
-    }
-
-    li {
-      margin-bottom: 0.5em;
-    }
-
-    /* --- Links --- */
-    a {
-      color: #8ab4f8; /* silvery blue */
+    .nav-name {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text);
       text-decoration: none;
-      font-weight: 500;
-      transition: transform 0.15s ease, color 0.15s ease;
+      opacity: 0;
+      animation: fadeIn 1.2s ease 0.2s forwards;
     }
 
-    a:hover {
-      color: #a3c1ff; /* lighter blue on hover */
-      transform: scale(1.02);
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+      opacity: 0;
+      animation: fadeIn 1.2s ease 0.4s forwards;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 48px 72px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 40%, rgba(200,169,110,0.06) 0%, transparent 60%),
+                  radial-gradient(ellipse at 20% 80%, rgba(138,111,74,0.04) 0%, transparent 50%);
+    }
+
+    .hero-rule {
+      position: absolute;
+      top: 0; bottom: 0; left: 48px;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent 0%, var(--border) 20%, var(--border) 80%, transparent 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      opacity: 0;
+      animation: slideUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .hero-name {
+      font-family: var(--font-display);
+      font-size: clamp(64px, 10vw, 128px);
+      font-weight: 300;
+      line-height: 0.92;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 32px;
+    }
+
+    .hero-name em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-bio {
+      max-width: 520px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+      margin-bottom: 48px;
+    }
+
+    .hero-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 6px 14px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .tag:hover { border-color: var(--accent); color: var(--accent); }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 32px;
+      right: 48px;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      writing-mode: vertical-rl;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      opacity: 0;
+      animation: fadeIn 1s ease 1.5s forwards;
+    }
+
+    .scroll-hint::before {
+      content: '';
+      width: 1px;
+      height: 48px;
+      background: var(--border);
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 120px 48px;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 56px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      max-width: 80px;
+      height: 1px;
+      background: var(--accent2);
+    }
+
+    /* ── WORK ── */
+    .work-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+
+    .work-item {
+      position: relative;
+      background: var(--bg2);
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .work-item.featured {
+      grid-column: 1 / -1;
+    }
+
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      background: var(--bg3);
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .work-item-thumb {
+      aspect-ratio: 16/9;
+      background: var(--bg3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .work-item-thumb::after {
+      content: '▶';
+      font-size: 24px;
+      color: var(--accent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .work-item:hover .work-item-thumb::after { opacity: 1; }
+
+    .work-item-thumb-inner {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--bg3) 0%, var(--bg2) 100%);
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .work-item:hover .work-item-thumb-inner { transform: scale(1.04); }
+
+    .work-item-info {
+      padding: 20px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-top: 1px solid var(--border);
+    }
+
+    .work-item-title {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--text);
+    }
+
+    .work-item-meta {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-align: right;
+    }
+
+    .work-link {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ── EDITING REEL ── */
+    .editing-link {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 28px 32px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: var(--text);
+      transition: border-color 0.2s, background 0.2s;
+      margin-top: 2px;
+    }
+
+    .editing-link:hover {
+      border-color: var(--accent);
+      background: var(--bg3);
+    }
+
+    .editing-link-icon {
+      font-size: 20px;
+      color: var(--accent);
+    }
+
+    .editing-link-label {
+      font-family: var(--font-display);
+      font-size: 18px;
+    }
+
+    .editing-link-arrow {
+      margin-left: auto;
+      color: var(--muted);
+      transition: transform 0.2s, color 0.2s;
+    }
+
+    .editing-link:hover .editing-link-arrow {
+      transform: translateX(4px);
+      color: var(--accent);
+    }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1px;
+      background: var(--border);
+    }
+
+    .skill-item {
+      background: var(--bg);
+      padding: 36px 32px;
+    }
+
+    .skill-category {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .skill-list {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 2;
+    }
+
+    /* ── EXPERIENCE ── */
+    .exp-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .exp-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      padding: 36px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+    }
+
+    .exp-item:first-child { border-top: 1px solid var(--border); }
+
+    .exp-role {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .exp-org {
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      margin-bottom: 12px;
+    }
+
+    .exp-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .exp-bullets li {
+      font-size: 12px;
+      color: var(--muted);
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .exp-bullets li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--accent2);
+    }
+
+    .exp-date {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      white-space: nowrap;
+      padding-top: 6px;
+    }
+
+    /* ── EDUCATION ── */
+    .edu-block {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .edu-degree {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 300;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .edu-school {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .edu-honors {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .honor-tag {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--accent2);
+      padding: 4px 12px;
+    }
+
+    /* ── CONTACT ── */
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .contact-headline {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--text);
+    }
+
+    .contact-headline em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      padding-top: 8px;
+    }
+
+    .contact-link {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+      text-decoration: none;
+      color: var(--text);
+      transition: color 0.2s;
+    }
+
+    .contact-link:first-child { border-top: 1px solid var(--border); }
+
+    .contact-link:hover { color: var(--accent); }
+
+    .contact-link-label { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; }
+    .contact-link-value { font-family: var(--font-display); font-size: 18px; }
+
+    .resume-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 32px;
+      padding: 14px 28px;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .resume-btn:hover {
+      background: var(--accent);
+      color: var(--bg);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 32px 48px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer span {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 20px 24px; }
+      .nav-links { display: none; }
+      .hero { padding: 0 24px 56px; }
+      section { padding: 80px 24px; }
+      .work-grid { grid-template-columns: 1fr; }
+      .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+      .edu-block { grid-template-columns: 1fr; }
+      footer { padding: 24px; flex-direction: column; gap: 8px; text-align: center; }
+      .hero-rule { left: 24px; }
+      .scroll-hint { right: 24px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Header / Name -->
-<header>
-  <h1>Ethan Tran</h1>
-  <p>Early-career filmmaker focused on cinematography with hands-on experience in camera operation, lighting, and post-production on narrative, documentary, and live-event projects. Comfortable in fast-paced, collaborative environments, creating short-form and narrative content from capture through delivery.
-</p>
-</header>
-
-
-  <!-- Sample Projects -->
-  <section id="sample-projects">
-    <h2>Sample Film Work</h2>
-    <ul>
-      <li><a href="https://player.vimeo.com/video/1160243877" target="_blank">BFA Filmmaking Reel (assorted projects, 2 min)</a></li>
-      <li><a href="https://www.youtube.com/watch?v=vMSxL_GT7YM" target="_blank">"The Grudge" (final year film project, 15 min)</a></li>
-      <li><a href="https://www.youtube.com/@ReysEdits/videos" target="_blank">Selected Editing Projects</a></li>
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-name">Ethan Tran</a>
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" style="border-top: none;">
+    <div class="hero-bg"></div>
+    <div class="hero-rule"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Cinematographer &amp; Filmmaker — Chicago, IL</p>
+      <h1 class="hero-name">Ethan<br><em>Tran</em></h1>
+      <p class="hero-bio">Early-career filmmaker with a focus in cinematography and hands-on experience across camera operation, lighting, and post-production on narrative, documentary, and live-event productions. DePaul University BFA, 2025.</p>
+      <div class="hero-tags">
+        <span class="tag">Camera</span>
+        <span class="tag">Lighting</span>
+        <span class="tag">Post-Production</span>
+        <span class="tag">Production Assistant</span>
+        <span class="tag">Color</span>
+      </div>
+    </div>
+    <div class="scroll-hint">Scroll</div>
   </section>
 
-  <!-- Sample Photography -->
-  <section id="sample-photography">
-    <h2>Sample Photography</h2>
-    <ul>
-      <li><a href="https://www.instagram.com/ethantran.png?igsh=M3kzdndvbHBlejht" target="_blank">Photography Portfolio (updating soon)</a></li>
+  <!-- WORK -->
+  <section id="work">
+    <p class="section-label reveal">Selected Work</p>
+    <div class="work-grid">
 
-    </ul>
+      <!-- Featured: BFA Reel -->
+      <div class="work-item featured reveal">
+        <div class="video-wrapper">
+          <iframe src="https://player.vimeo.com/video/1160243877?title=0&byline=0&portrait=0&color=c8a96e"
+            allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="BFA Filmmaking Reel"></iframe>
+        </div>
+        <div class="work-item-info">
+          <div>
+            <div class="work-item-title">BFA Filmmaking Reel</div>
+          </div>
+          <div class="work-item-meta">Assorted Projects<br>2 min</div>
+        </div>
+      </div>
+
+      <!-- The Grudge -->
+      <div class="work-item reveal">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/vMSxL_GT7YM?color=white&rel=0&modestbranding=1"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen title="The Grudge"></iframe>
+        </div>
+        <div class="work-item-info">
+          <div>
+            <div class="work-item-title">The Grudge</div>
+          </div>
+          <div class="work-item-meta">Final Year Film<br>15 min</div>
+        </div>
+      </div>
+
+      <!-- Editing -->
+      <div class="work-item reveal">
+        <a class="work-link" href="https://www.youtube.com/@ReysEdits/videos" target="_blank" rel="noopener">
+          <div class="work-item-thumb">
+            <div class="work-item-thumb-inner" style="background: linear-gradient(135deg, #141414 0%, #1a1a1a 100%);"></div>
+          </div>
+          <div class="work-item-info">
+            <div>
+              <div class="work-item-title">Editing Projects</div>
+            </div>
+            <div class="work-item-meta">Selected Work<br>Various</div>
+          </div>
+        </a>
+      </div>
+
+    </div>
   </section>
 
-  <!-- Skills -->
+  <!-- SKILLS -->
   <section id="skills">
-    <h2>Skills</h2>
-    <ul>
-      <li>Camera & Cinematography: Narrative and documentary projects using digital cinema and mirrorless cameras</li>
-      <li>Lighting & Live Production: Studio, location, and live-event lighting; DMX-controlled systems</li>
-      <li>Post-Production: Editing, color correction, and delivery in DaVinci Resolve</li>
-      <li>Production Support: On-set coordination, media management, fast-turnaround workflows
-</li>
-    </ul>
+    <p class="section-label reveal">Technical Skills</p>
+    <div class="skills-grid reveal">
+      <div class="skill-item">
+        <div class="skill-category">Camera &amp; Imaging</div>
+        <div class="skill-list">
+          Arri Alexa Mini<br>
+          RED Komodo<br>
+          Sony FX Series<br>
+          Canon EOS R5<br>
+          Nikon D750
+        </div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-category">Post-Production</div>
+        <div class="skill-list">
+          DaVinci Resolve — Editing &amp; Color<br>
+          Adobe After Effects<br>
+          ProTools<br>
+          Media Encoder<br>
+          Multi-format Delivery
+        </div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-category">Lighting</div>
+        <div class="skill-list">
+          Studio &amp; Location Lighting<br>
+          DMX Lighting Control<br>
+          Exposure &amp; Color Workflows<br>
+          Live-Event Lighting
+        </div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-category">Production</div>
+        <div class="skill-list">
+          Live-Event &amp; Multi-Camera Workflows<br>
+          Projection &amp; Playback Systems<br>
+          On-Set Coordination<br>
+          Media Management<br>
+          Fast-Turnaround Delivery
+        </div>
+      </div>
+    </div>
   </section>
 
-  <!-- Experience -->
+  <!-- EXPERIENCE -->
   <section id="experience">
-    <h2>Experience</h2>
-    <ul>
-      <li>DePaul Visiting Artist Series – Production Assistant (Sep 2024 – Jun 2025)</li>
-      <li>Independent Film Productions – Director, Cinematographer, Camera Operator, Editor, Sound (Aug 2023 – Jun 2025)</li>
-      <li>Arlington Independent Media – Camera Operator & Counselor in Training (Apr 2019 – Aug 2019)</li>
-    </ul>
+    <p class="section-label reveal">Experience</p>
+    <div class="exp-list">
+
+      <div class="exp-item reveal">
+        <div>
+          <div class="exp-role">Production Assistant</div>
+          <div class="exp-org">DePaul Visiting Artist Series — Chicago, IL</div>
+          <ul class="exp-bullets">
+            <li>Managed projection, media playback, and DMX lighting for large-format industry screenings and events</li>
+            <li>Captured and organized promotional photo/video content across a full year of programming</li>
+            <li>Assisted visiting professionals with setup, breakdown, and on-site logistics</li>
+          </ul>
+        </div>
+        <div class="exp-date">2024 – 2025</div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div>
+          <div class="exp-role">Director / DP / Editor / Camera Op</div>
+          <div class="exp-org">Independent Film Productions, DePaul University — Chicago, IL</div>
+          <ul class="exp-bullets">
+            <li>Contributed to 40+ narrative and documentary productions across multiple crew roles</li>
+            <li>Designed and executed camera and lighting setups across narrative, documentary, and experimental formats</li>
+            <li>Edited and color-corrected in DaVinci Resolve; delivered in multiple formats for academic and public exhibition</li>
+          </ul>
+        </div>
+        <div class="exp-date">2023 – 2025</div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div>
+          <div class="exp-role">Camera Operator</div>
+          <div class="exp-org">Arlington Independent Media — Arlington, VA</div>
+          <ul class="exp-bullets">
+            <li>Filmed live community events and public programming for broadcast and archival</li>
+            <li>Mentored youth participants in foundational filmmaking and storytelling techniques</li>
+          </ul>
+        </div>
+        <div class="exp-date">2019</div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div>
+          <div class="exp-role">BFA in Film &amp; Television</div>
+          <div class="exp-org">DePaul University — Chicago, IL · Cinematography Concentration</div>
+          <ul class="exp-bullets">
+            <li>Four-Year Dean's Scholarship recipient · Dean's List 2023 &amp; 2024</li>
+          </ul>
+        </div>
+        <div class="exp-date">2021 – 2025</div>
+      </div>
+
+    </div>
   </section>
 
-  <!-- Contact -->
+  <!-- CONTACT -->
   <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:ejt1141@gmail.com">ejt1141@gmail.com</a></p>
-    <p>Resume: <a href="resume.pdf" target="_blank">Download PDF</a></p>
-  
+    <p class="section-label reveal">Get in Touch</p>
+    <div class="contact-inner">
+      <div class="reveal">
+        <h2 class="contact-headline">Open to<br><em>new work</em><br>&amp; collaboration.</h2>
+        <a href="resume.pdf" class="resume-btn" download>
+          ↓ Download Resume
+        </a>
+      </div>
+      <div class="contact-links reveal">
+        <a href="/cdn-cgi/l/email-protection#0b6e617f3a3a3f3a4b6c666a626725686466" class="contact-link">
+          <span class="contact-link-label">Email</span>
+          <span class="contact-link-value"><span class="__cf_email__" data-cfemail="b6d3dcc287878287f6d1dbd7dfda98d5d9db">[email&#160;protected]</span></span>
+        </a>
+        <a href="https://www.linkedin.com/in/yourprofile" target="_blank" rel="noopener" class="contact-link">
+          <span class="contact-link-label">LinkedIn</span>
+          <span class="contact-link-value">linkedin.com/in/yourprofile</span>
+        </a>
+        <a href="https://www.youtube.com/@ReysEdits/videos" target="_blank" rel="noopener" class="contact-link">
+          <span class="contact-link-label">Editing Work</span>
+          <span class="contact-link-value">YouTube</span>
+        </a>
+      </div>
+    </div>
   </section>
 
-</body>
-</html>
+  <!-- FOOTER -->
+  <footer>
+    <span>© 2026 Ethan Tran</span>
+    <span>Chicago, IL — Available for work</span>
+  </footer>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.
