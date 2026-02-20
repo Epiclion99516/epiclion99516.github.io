@@ -74,11 +74,11 @@
 
     /* ── HERO ── */
     .hero {
-      min-height: 100vh;
+      min-height: 70vh;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      padding: 0 48px 72px;
+      padding: 120px 48px 64px;
       position: relative;
       overflow: hidden;
       border-top: none;
@@ -294,7 +294,7 @@
     /* ── SKILLS ── */
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(2, 1fr);
       gap: 1px;
       background: var(--border);
     }
@@ -464,9 +464,167 @@
       .contact-inner { grid-template-columns: 1fr; gap: 48px; }
       footer { padding: 24px; flex-direction: column; gap: 8px; text-align: center; }
     }
+    /* ── LIGHTBOX ── */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      background: rgba(0,0,0,0.92);
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
+
+    .lightbox.open {
+      display: flex;
+    }
+
+    .lightbox-inner {
+      position: relative;
+      width: 100%;
+      max-width: 1100px;
+    }
+
+    .lightbox-video {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      background: #000;
+    }
+
+    .lightbox-video iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: -44px;
+      right: 0;
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-family: var(--font-mono);
+      transition: color 0.2s;
+      padding: 4px 0;
+    }
+
+    .lightbox-close:hover { color: var(--accent); }
+    /* ── PDF LIGHTBOX ── */
+    .pdf-lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 600;
+      background: rgba(0,0,0,0.92);
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
+
+    .pdf-lightbox.open { display: flex; }
+
+    .pdf-inner {
+      position: relative;
+      width: 100%;
+      max-width: 860px;
+      height: 90vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .pdf-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 12px;
+    }
+
+    .pdf-toolbar-title {
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-family: var(--font-mono);
+    }
+
+    .pdf-toolbar-actions {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .pdf-download-btn {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 8px 18px;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .pdf-download-btn:hover { background: var(--accent); color: var(--bg); }
+
+    .pdf-close-btn {
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-family: var(--font-mono);
+      transition: color 0.2s;
+      padding: 4px 0;
+    }
+
+    .pdf-close-btn:hover { color: var(--accent); }
+
+    .pdf-frame {
+      flex: 1;
+      width: 100%;
+      border: none;
+      background: #fff;
+    }
   </style>
 </head>
 <body>
+
+  <!-- PDF LIGHTBOX -->
+  <div class="pdf-lightbox" id="pdf-lightbox">
+    <div class="pdf-inner">
+      <div class="pdf-toolbar">
+        <span class="pdf-toolbar-title">Resume — Ethan Tran</span>
+        <div class="pdf-toolbar-actions">
+          <a href="resume.pdf" download class="pdf-download-btn">&#8595; Download</a>
+          <button class="pdf-close-btn" id="pdf-close">&#x2715; Close</button>
+        </div>
+      </div>
+      <iframe class="pdf-frame" id="pdf-frame" src=""></iframe>
+    </div>
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-inner">
+      <button class="lightbox-close" id="lightbox-close">&#x2715; Close</button>
+      <div class="lightbox-video">
+        <iframe id="lightbox-iframe" src="" allowfullscreen
+          allow="autoplay; fullscreen; picture-in-picture; accelerometer; encrypted-media; gyroscope"></iframe>
+      </div>
+    </div>
+  </div>
 
   <nav>
     <a href="#" class="nav-name">Ethan Tran</a>
@@ -501,7 +659,7 @@
     <div class="work-grid">
 
       <div class="work-item featured reveal">
-        <a class="work-link" href="https://vimeo.com/1160243877" target="_blank" rel="noopener">
+        <a class="work-link" href="#" data-video="https://player.vimeo.com/video/1160243877?autoplay=1&title=0&byline=0&portrait=0&color=c8a96e" onclick="openLightbox(event, this)">
           <div class="work-item-thumb">
             <img src="https://vumbnail.com/1160243877.jpg" alt="BFA Filmmaking Reel" onerror="this.style.display='none'">
             <div class="play-btn"></div>
@@ -514,7 +672,7 @@
       </div>
 
       <div class="work-item reveal">
-        <a class="work-link" href="https://www.youtube.com/watch?v=vMSxL_GT7YM" target="_blank" rel="noopener">
+        <a class="work-link" href="#" data-video="https://www.youtube.com/embed/vMSxL_GT7YM?autoplay=1&rel=0&modestbranding=1" onclick="openLightbox(event, this)">
           <div class="work-item-thumb">
             <img src="https://img.youtube.com/vi/vMSxL_GT7YM/maxresdefault.jpg" alt="The Grudge">
             <div class="play-btn"></div>
@@ -628,7 +786,7 @@
     <div class="contact-inner">
       <div class="reveal">
         <h2 class="contact-headline">Open to<br><em>new work</em><br>&amp; collaboration.</h2>
-        <a href="resume.pdf" class="resume-btn" download>&#8595; Download Resume</a>
+        <a href="#" class="resume-btn" id="resume-btn">&#128196; View Resume</a>
       </div>
       <div class="contact-links reveal">
         <a href="mailto:ejt1141@gmail.com" class="contact-link">
@@ -667,6 +825,61 @@
     }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
 
     reveals.forEach(el => observer.observe(el));
+
+    // PDF Lightbox
+    const pdfLightbox = document.getElementById('pdf-lightbox');
+    const pdfFrame    = document.getElementById('pdf-frame');
+    const pdfClose    = document.getElementById('pdf-close');
+    const resumeBtn   = document.getElementById('resume-btn');
+
+    resumeBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      pdfFrame.src = 'resume.pdf';
+      pdfLightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+
+    function closePdfLightbox() {
+      pdfLightbox.classList.remove('open');
+      pdfFrame.src = '';
+      document.body.style.overflow = '';
+    }
+
+    pdfClose.addEventListener('click', closePdfLightbox);
+    pdfLightbox.addEventListener('click', (e) => {
+      if (e.target === pdfLightbox) closePdfLightbox();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') { closeLightbox(); closePdfLightbox(); }
+    });
+
+    // Lightbox
+    const lightbox = document.getElementById('lightbox');
+    const iframe   = document.getElementById('lightbox-iframe');
+    const closeBtn = document.getElementById('lightbox-close');
+
+    function openLightbox(e, el) {
+      e.preventDefault();
+      iframe.src = el.dataset.video;
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      iframe.src = '';
+      document.body.style.overflow = '';
+    }
+
+    closeBtn.addEventListener('click', closeLightbox);
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
   </script>
 
 </body>
