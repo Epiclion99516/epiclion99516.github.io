@@ -518,6 +518,106 @@
     }
 
     .lightbox-close:hover { color: var(--accent); }
+    /* ── PHOTOGRAPHY ── */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .photo-item {
+      cursor: pointer;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .photo-thumb {
+      aspect-ratio: 1/1;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .photo-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .photo-item:hover .photo-thumb img { transform: scale(1.05); }
+
+    .photo-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(10,10,10,0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s;
+    }
+
+    .photo-overlay span {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text);
+      opacity: 0;
+      transition: opacity 0.3s;
+      font-family: var(--font-mono);
+    }
+
+    .photo-item:hover .photo-overlay { background: rgba(10,10,10,0.45); }
+    .photo-item:hover .photo-overlay span { opacity: 1; }
+
+    /* ── PHOTO LIGHTBOX ── */
+    .photo-lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 700;
+      background: rgba(0,0,0,0.95);
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
+
+    .photo-lightbox.open { display: flex; }
+
+    .photo-lightbox-inner {
+      position: relative;
+      max-width: 90vw;
+      max-height: 90vh;
+    }
+
+    .photo-lightbox-inner img {
+      max-width: 90vw;
+      max-height: 85vh;
+      object-fit: contain;
+      display: block;
+    }
+
+    .photo-lightbox-close {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-family: var(--font-mono);
+      transition: color 0.2s;
+    }
+
+    .photo-lightbox-close:hover { color: var(--accent); }
+
+    @media (max-width: 768px) {
+      .photo-grid { grid-template-columns: 1fr; }
+    }
+
     /* ── PDF LIGHTBOX ── */
     .pdf-lightbox {
       display: none;
@@ -601,6 +701,14 @@
 </head>
 <body>
 
+  <!-- PHOTO LIGHTBOX -->
+  <div class="photo-lightbox" id="photo-lightbox">
+    <div class="photo-lightbox-inner">
+      <button class="photo-lightbox-close" id="photo-lightbox-close">&#x2715; Close</button>
+      <img id="photo-lightbox-img" src="" alt="">
+    </div>
+  </div>
+
   <!-- PDF LIGHTBOX -->
   <div class="pdf-lightbox" id="pdf-lightbox">
     <div class="pdf-inner">
@@ -627,9 +735,9 @@
   </div>
 
   <nav>
-    <a href="#" class="nav-name">Ethan Tran</a>
     <ul class="nav-links">
       <li><a href="#work">Work</a></li>
+      <li><a href="#photography">Photography</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -780,6 +888,31 @@
     </div>
   </section>
 
+  <!-- PHOTOGRAPHY -->
+  <section id="photography">
+    <p class="section-label reveal">Photography</p>
+    <div class="photo-grid reveal">
+      <div class="photo-item" onclick="openPhoto('2.jpg')">
+        <div class="photo-thumb">
+          <img src="2.jpg" alt="Photography">
+          <div class="photo-overlay"><span>View</span></div>
+        </div>
+      </div>
+      <div class="photo-item" onclick="openPhoto('4.jpg')">
+        <div class="photo-thumb">
+          <img src="4.jpg" alt="Photography">
+          <div class="photo-overlay"><span>View</span></div>
+        </div>
+      </div>
+      <div class="photo-item" onclick="openPhoto('1.jpg')">
+        <div class="photo-thumb">
+          <img src="1.jpg" alt="Photography">
+          <div class="photo-overlay"><span>View</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CONTACT -->
   <section id="contact">
     <p class="section-label reveal">Get in Touch</p>
@@ -792,14 +925,6 @@
         <a href="mailto:ejt1141@gmail.com" class="contact-link">
           <span class="contact-link-label">Email</span>
           <span class="contact-link-value">ejt1141@gmail.com</span>
-        </a>
-        <a href="https://www.linkedin.com/in/yourprofile" target="_blank" rel="noopener" class="contact-link">
-          <span class="contact-link-label">LinkedIn</span>
-          <span class="contact-link-value">linkedin.com/in/yourprofile</span>
-        </a>
-        <a href="https://www.youtube.com/@ReysEdits/videos" target="_blank" rel="noopener" class="contact-link">
-          <span class="contact-link-label">Editing Work</span>
-          <span class="contact-link-value">YouTube</span>
         </a>
       </div>
     </div>
@@ -826,6 +951,28 @@
 
     reveals.forEach(el => observer.observe(el));
 
+    // Photo Lightbox
+    const photoLightbox     = document.getElementById('photo-lightbox');
+    const photoLightboxImg  = document.getElementById('photo-lightbox-img');
+    const photoLightboxClose = document.getElementById('photo-lightbox-close');
+
+    function openPhoto(src) {
+      photoLightboxImg.src = src;
+      photoLightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closePhotoLightbox() {
+      photoLightbox.classList.remove('open');
+      photoLightboxImg.src = '';
+      document.body.style.overflow = '';
+    }
+
+    photoLightboxClose.addEventListener('click', closePhotoLightbox);
+    photoLightbox.addEventListener('click', (e) => {
+      if (e.target === photoLightbox || e.target === photoLightboxImg) closePhotoLightbox();
+    });
+
     // PDF Lightbox
     const pdfLightbox = document.getElementById('pdf-lightbox');
     const pdfFrame    = document.getElementById('pdf-frame');
@@ -850,7 +997,7 @@
       if (e.target === pdfLightbox) closePdfLightbox();
     });
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') { closeLightbox(); closePdfLightbox(); }
+      if (e.key === 'Escape') { closeLightbox(); closePdfLightbox(); closePhotoLightbox(); }
     });
 
     // Lightbox
